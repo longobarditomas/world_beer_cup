@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\Book;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,18 +12,24 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        User::truncate();
-        User::create([
-            'name' => 'Alex',
-            'email' => 'alex@alex.com',
-            'password' => Hash::make('pwdpwd'),
+    public function run() {
+
+        $this->call([
+            UserSeeder::class,
+            BeerSeeder::class,
+            CommentSeeder::class,
+            ReservationSeeder::class,
+            FavoriteSeeder::class,
         ]);
-        User::create([
-            'name' => 'Bill',
-            'email' => 'bill@gmail.com',
-            'password' => Hash::make('bill'),
-        ]);
+
+        /* Book::truncate();
+        $faker = \Faker\Factory::create();
+        for ($i = 0; $i < 50; $i++) {
+            Book::create([
+                'title' => $faker->sentence,
+                'author' => $faker->name,
+            ]);
+        } */
+
     }
 }

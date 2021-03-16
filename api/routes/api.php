@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BeerController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +22,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function(){
+Route::get('/beers', [BeerController::class, 'index']);
 
+Route::get('/comments', [CommentController::class, 'index']);
+Route::get('/getComments/{beerID?}', [CommentController::class, 'getComments']);
+
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    Route::get('/book', [BookController::class, 'index']);
+    Route::get('/reservations', [ReservationController::class, 'index']);
+    
+    Route::post('/comments', [CommentController::class, 'create']);
+    
+    Route::get('/favorites', [FavoriteController::class, 'index']);
+    Route::post('/favorites', [FavoriteController::class, 'create']);
+    Route::delete('/favorites/{beerID?}', [FavoriteController::class, 'delete']);
+
+    Route::get('/reservations/{reservationID?}', [ReservationController::class, 'show']);
 });
