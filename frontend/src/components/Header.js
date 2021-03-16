@@ -1,0 +1,133 @@
+import React, {Component} from 'react';
+import { Navbar, NavbarBrand, Nav, NavItem, NavbarToggler, Collapse, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import Login from './Login';
+
+class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isNavOpen: false,
+            isModalOpen: false
+        };
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+    
+    toggleNav() {
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        });
+    }
+    
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    handleLogin(event) {
+        this.toggleModal();
+        this.props.loginUser({email: this.email.value, password: this.password.value});
+        event.preventDefault();
+    }
+
+    handleLogout() {
+        this.props.logoutUser();
+    }
+    render(){
+        return (
+            <React.Fragment>
+
+                {/* NAVBAR */}
+                <Navbar dark className="background-header" expand="lg">
+                <div className="container" style={{fontFamily: 'FiraSans-Light'}}>
+                    <NavbarToggler onClick={this.toggleNav} />
+                    <NavbarBrand className="mr-auto" href="/">World Beer Cup</NavbarBrand>
+                    <Collapse isOpen={this.state.isNavOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink className="nav-link" to="/beers">
+                                Beers
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="nav-link" to="/reservations">
+                                Reservations
+                            </NavLink>
+                        </NavItem>
+                    { this.props.auth.isAuthenticated ?
+                        <NavItem>
+                            <NavLink className="nav-link" to="/favorites">
+                                Favorites
+                            </NavLink>
+                        </NavItem>
+                        :   ''
+                    }
+                        <NavItem>
+                            { !this.props.auth.isAuthenticated ?
+                                <Button outline onClick={this.toggleModal}>
+                                    Login
+                                </Button>
+                            :
+                                <UncontrolledDropdown nav inNavbar>
+                                <DropdownToggle nav caret>
+                                    {/* {this.props.auth.user.email} */}
+                                    User
+                                </DropdownToggle>
+                                <DropdownMenu right>
+                                    <NavLink to="/user">
+                                    <DropdownItem>
+                                        Edit
+                                    </DropdownItem>
+                                    </NavLink>
+                                    <DropdownItem divider />
+                                    <DropdownItem outline onClick={this.handleLogout}>
+                                        Logout
+                                    </DropdownItem>
+                                </DropdownMenu>
+                                </UncontrolledDropdown>
+                            }
+                        </NavItem>
+                    </Nav>
+                    </Collapse>
+                </div>
+                </Navbar>
+
+                {/* LOGIN MODAL */}
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    <ModalBody>
+                        {/* <Login /> */}
+                        <Form onSubmit={this.handleLogin}>
+                        <FormGroup>
+                            <Label htmlFor="email">email</Label>
+                            <Input type="text" id="email" name="email"
+                                innerRef={(input) => this.email = input} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">Password</Label>
+                            <Input type="password" id="password" name="password"
+                                innerRef={(input) => this.password = input}  />
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                            <Input type="checkbox" name="remember"
+                            innerRef={(input) => this.remember = input}  />
+                            Remember me
+                            </Label>
+                        </FormGroup>
+                        <Button type="submit" value="submit" color="primary">Login</Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
+                
+            </React.Fragment>
+        );
+    }
+}
+
+export default Header;
