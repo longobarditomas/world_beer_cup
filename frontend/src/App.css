@@ -119,3 +119,10 @@
   justify-content:center;
   align-items:center
 }
+
+.date-picker {
+  padding: 5px 10px 5px 10px;
+  border: 2px solid #D3D3D3;
+  border-radius: 4px;
+  width: 100%;
+}
