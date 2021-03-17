@@ -229,7 +229,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                             <BreadcrumbItem active>{props.beer.name}</BreadcrumbItem>
                         </Breadcrumb>
                         <div className="col-12">
-                            <h3>Beers</h3>
+                            <h3 className='App-subtitle'>Beers</h3>
                             <hr />
                         </div>                
                     </div>

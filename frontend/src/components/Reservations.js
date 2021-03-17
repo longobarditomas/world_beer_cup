@@ -43,59 +43,56 @@ class ReservationForm extends Component {
 
     render() {
         return (
-            <Card>
-                {/* <CardHeader style={{ backgroundColor: '#333333', color: 'white' }}>
-                    <div><h6>Book your table</h6></div>
-                </CardHeader> */}
+            <Card style={{marginBottom: '20px'}}>
                 <CardBody>
-            <Form model="feedback" onSubmit={(values) => this.handleSubmit(values) }>
-                <Row className="form-group">
-                    <Label htmlFor="date" md={4}>Date</Label>
-                    <Col md={8}>
-                        <DatePickerComponent />
-                    </Col>
-                </Row>
-                <Row className="form-group">
-                    <Label htmlFor="party" md={4}>Party size</Label>
-                    <Col md={8}>
-                        <Control.select model=".party" name="party"
-                            className="form-control" validators={{required, isNumber}}>
-                            <option>Select</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </Control.select>
-                        <Errors
-                            className="text-danger"
-                            model=".party"
-                            show="touched"
-                            messages={{
-                                required: 'Required.',
-                                isNumber: ' Please select.'
-                            }}
-                        />
-                    </Col>
-                </Row>
-                <Row className="form-group">
-                    <Label htmlFor="requeriments" xs={12}>Special requirements</Label>
-                    <Col>
-                        <Control.textarea model=".requeriments" id="requeriments" name="requeriments"
-                            rows="4"
-                            className="form-control" 
-                        />
-                    </Col>
-                </Row>
-                <Row className="form-group">
-                    <Col>
-                        <Button type="submit" color="primary">Book a table</Button>
-                    </Col>
-                </Row>
-            </Form>
+                    <Form model="feedback" onSubmit={(values) => this.handleSubmit(values) }>
+                        <Row className="form-group">
+                            <Label htmlFor="date" md={4} style={{textAlign: 'left'}}>Date*</Label>
+                            <Col md={8}>
+                                <DatePickerComponent />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Label htmlFor="party" md={4} style={{textAlign: 'left'}}>Party size*</Label>
+                            <Col md={8}>
+                                <Control.select model=".party" name="party"
+                                    className="form-control" validators={{required, isNumber}}>
+                                    <option>Select</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                </Control.select>
+                                <Errors
+                                    className="text-danger"
+                                    model=".party"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required.',
+                                        isNumber: ' Please select.'
+                                    }}
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Label htmlFor="requeriments" xs={12} style={{textAlign: 'left'}}>Special requirements</Label>
+                            <Col>
+                                <Control.textarea model=".requeriments" id="requeriments" name="requeriments"
+                                    rows="2"
+                                    className="form-control" 
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Col>
+                                <Button type="submit" className="reservation-btn">Book a table</Button>
+                            </Col>
+                        </Row>
+                    </Form>
                 </CardBody>
             </Card>
         );
@@ -157,7 +154,7 @@ const Reservations = (props) => {
                         <BreadcrumbItem active>Reservations</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>Reservations</h3>
+                        <h3 className='App-subtitle'>Reservations</h3>
                         <hr />
                     </div>
                 </div>
@@ -168,8 +165,8 @@ const Reservations = (props) => {
                         <p>At World Beer Cup we take very seriously the distancing protocols required by the current situation both on the terrace and inside the bar.</p><br />
                     </div>
                     <div className="col-12 col-lg-4" style={{textAlign: 'center'}}>
-                        <RenderReservations reservations={props.reservations} deleteReservation={props.deleteReservation} />
                         <ReservationForm reservations={props.reservations} deleteReservation={props.deleteReservation} />
+                        <RenderReservations reservations={props.reservations} deleteReservation={props.deleteReservation} />
                     </div>
                 </div>
             </div>

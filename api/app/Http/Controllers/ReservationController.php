@@ -10,7 +10,7 @@ class ReservationController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json(Reservation::where('userID', $request->user()->id)->get());
+        return response()->json(Reservation::where('userID', $request->user()->id)->where('date', '>', now())->get());
     }
 
     public function create()

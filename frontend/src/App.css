@@ -9,6 +9,19 @@
   pointer-events: none;
 }
 
+.breadcrumb {
+  margin-bottom: 0;
+  background-color: white;
+}
+
+a {
+  color: #333333;
+}
+a:hover {
+  color: #C63B1D; 
+  text-decoration: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -17,6 +30,7 @@
 
 .App-subtitle {
   margin-bottom: 20px;
+  font-family: 'FiraSans-Light'
 }
 
 .App-link {
@@ -125,4 +139,9 @@
   border: 2px solid #D3D3D3;
   border-radius: 4px;
   width: 100%;
+}
+
+.reservation-btn {
+  background-color: #C63B1D;
+  border: none;
 }

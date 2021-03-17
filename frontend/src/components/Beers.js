@@ -74,7 +74,7 @@ import { baseUrl } from '../shared/baseUrl';
 							<BreadcrumbItem active>Beers</BreadcrumbItem>
 						</Breadcrumb>
 						<div className="col-12">
-							<h3>Beers</h3>
+							<h3 className='App-subtitle'>Beers</h3>
 							<hr />
 						</div>                
 					</div>

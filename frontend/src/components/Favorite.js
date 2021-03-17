@@ -76,7 +76,7 @@ const Favorites = (props) => {
                         <BreadcrumbItem active>My Activity</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>My Activity</h3>
+                        <h3 className='App-subtitle'>Favorites</h3>
                         <hr />
                     </div>
                 </div>
