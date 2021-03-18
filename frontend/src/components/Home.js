@@ -42,7 +42,7 @@ const Rankings = () => {
                     <th>Name</th>
                     <th>Alcohol</th>
                     <th>Country</th>
-                    <th>Color</th>
+                    <th>Style</th>
                     <th>Votes</th>
                 </tr>
             </thead>

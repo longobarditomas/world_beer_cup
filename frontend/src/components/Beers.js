@@ -21,7 +21,7 @@ import { baseUrl } from '../shared/baseUrl';
 								<Row xs="3" className="show-grid">
 									<Col><b>Alcohol</b></Col>
 									<Col><b>Country</b></Col>
-									<Col><b>Color</b></Col>
+									<Col><b>Style</b></Col>
 									<Col>{beer.alcohol}</Col>
 									<Col>{beer.country}</Col>
 									<Col>{beer.color}</Col>
