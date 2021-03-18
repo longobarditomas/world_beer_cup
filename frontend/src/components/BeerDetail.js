@@ -163,10 +163,10 @@ const minLength = (len) => (val) => val && (val.length >= len);
 		if (beer != null) {
 			return(
 				<div className="col-12 col-md-6">
-                    <Card className={`beer-color-${beer.color}`}>
+                    <Card className={`beer-color-${beer.category}`}>
                         <CardImg top src={baseUrl + beer.image} alt={beer.name} />
 						<CardImgOverlay>
-                                <Button outline className={`pull-right beer-color-text-${beer.color}`} color="primary" onClick={() => !auth ? history.push('/login') : favorite ? console.log('Already favorite') : postFavorite(beer.id)}>
+                                <Button outline className={`pull-right beer-color-text-${beer.category}`} color="primary" onClick={() => !auth ? history.push('/login') : favorite ? console.log('Already favorite') : postFavorite(beer.id)}>
                                     {favorite ?
                                         <span className="fa fa-heart"></span>
                                         : 

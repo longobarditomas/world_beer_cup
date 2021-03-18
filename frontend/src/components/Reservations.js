@@ -161,7 +161,7 @@ const Reservations = (props) => {
                 <div className="row">
                     <div className="col-12 col-lg-8 r-description">
                         <img src={baseUrl + 'images/reservations.jpg'} style={{width:'100%', marginBottom: '40px'}} />
-                        <p>Reserve your table, come to try this year's selection of beers and choose your favorite! We will be waiting for you with cold beer and salty popcorn.</p><br />
+                        <p>Book your table, come to try this year's selection of beers and choose your favorite! We will be waiting for you with cold beer and salty popcorn.</p><br />
                         <p>At World Beer Cup we take very seriously the distancing protocols required by the current situation both on the terrace and inside the bar.</p><br />
                     </div>
                     <div className="col-12 col-lg-4" style={{textAlign: 'center'}}>

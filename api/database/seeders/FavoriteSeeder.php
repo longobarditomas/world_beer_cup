@@ -4,33 +4,30 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Favorite;
+use App\Models\User;
+use App\Models\Beer;
 
-class FavoriteSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+class FavoriteSeeder extends Seeder {
+    
     public function run() {
-        $favorites = [
-            0 => [
-                "userID" => 2,
-                "beerID" => 1,
-                "created_at" => now(),
-                "updated_at" => now(),
-            ],
-            1 => [
-                "userID" => 2,
-                "beerID" => 2,
-                "created_at" => now(),
-                "updated_at" => now(),
-            ]
-        ];
         Favorite::truncate();
         $faker = \Faker\Factory::create();
-        foreach($favorites as $favorite){
-            Favorite::create($favorite);
+        $users = User::all();
+        $count = Beer::count();
+        foreach($users as $user) {
+            for($i = 1; $i <= 5; $i++) {
+                $beerID = rand(1, $count);
+                $rand_days = '-'.rand(3, 30).' days';
+                $user_favs = Favorite::where('userID', $user->id)->pluck('beerID')->toArray();
+                if (!in_array($beerID, $user_favs)) {
+                    Favorite::create([
+                        "userID"     => $user->id,
+                        "beerID"     => $beerID,
+                        "created_at" => date('Y-m-d H:i:s', strtotime($rand_days, strtotime(date('Y-m-d H:i:s')))),
+                        "updated_at" => date('Y-m-d H:i:s', strtotime($rand_days, strtotime(date('Y-m-d H:i:s')))),
+                    ]);
+                }
+            }
         }
     }
 }

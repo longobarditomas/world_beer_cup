@@ -28,6 +28,12 @@ a:hover {
   }
 }
 
+.App-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'FiraSans-Light'
+}
+
 .App-subtitle {
   margin-bottom: 20px;
   font-family: 'FiraSans-Light'
@@ -95,16 +101,16 @@ a:hover {
   background-color: #C63B1D;
 }
 
-.beer-color-text-Blonde { 
+.beer-color-text-Yellow { 
   border: 2px solid #E8DC24;
   color: #E8DC24;
 }
-.beer-color-text-Blonde:hover { 
+.beer-color-text-Yellow:hover { 
   border: 2px solid white;
   background-color: #E8DC24;
 }
 
-.beer-color-Blonde {
+.beer-color-Yellow {
   background-color: #E8DC24;
 }
 

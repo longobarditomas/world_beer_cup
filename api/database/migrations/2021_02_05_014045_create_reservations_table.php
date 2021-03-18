@@ -17,7 +17,6 @@ class CreateReservationsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('userID');
             $table->integer('party');
-            $table->boolean('terrace');
             $table->longText('requeriments');
             $table->dateTime('date', $precision = 0);
             $table->timestamps();

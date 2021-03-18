@@ -6,7 +6,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 	function RenderMenuItem({ beer, fetchComments }) {
 		return(
-			<Card className={`beer-color-${beer.color}`}>
+			<Card className={`beer-color-${beer.category}`}>
 				<Link /* onClick={() => fetchComments(beer.id)} */ to={`/beers/${beer.id}`} style={{textDecoration: 'none'}}>
                     <CardImg top src={baseUrl + beer.image} alt={beer.name} />
                     <CardBody style={{ minHeight: '4rem' }}>
@@ -38,7 +38,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 		const menu = props.beers.beers.map((beer) => {
 			return (
-				<div key={beer.id} className="col-12 col-md-4">
+				<div key={beer.id} className="col-12 col-md-4 mt-5">
 					<RenderMenuItem beer={beer} fetchComments={props.fetchComments} />
 				</div>
 			);

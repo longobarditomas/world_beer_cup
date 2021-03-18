@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/beers', [BeerController::class, 'index']);
+Route::get('/beers/top_beers', [BeerController::class, 'topBeers']);
 
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/getComments/{beerID?}', [CommentController::class, 'getComments']);

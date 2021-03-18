@@ -6,7 +6,7 @@ import { baseUrl } from '../shared/baseUrl';
 function RenderMenuItem({ beer, deleteFavorite }) {
     return(
         <div className="col-12 col-md-6 mt-4">
-            <Card className={`beer-color-${beer.color}`}>
+            <Card className={`beer-color-${beer.category}`}>
                 <Row>
                     <Col xs="5" md="5">
                         <CardImg top src={baseUrl + beer.image} alt={beer.name} />
@@ -84,7 +84,7 @@ const Favorites = (props) => {
                     <CardGroup>
                         {favorites}
                     </CardGroup>
-                    </Row>
+                </Row>
             </div>
         );
     }
