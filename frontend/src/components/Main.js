@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 /* import { actions } from 'react-redux-form'; */
-import { loginUser, logoutUser } from '../redux/auth/actionCreators';
+import { loginUser, logoutUser, signinUser } from '../redux/auth/actionCreators';
 import { fetchBeers } from '../redux/beer/actionCreators';
 import { fetchComments, postComment } from '../redux/comment/actionCreators';
 import { fetchFavorites, postFavorite, deleteFavorite } from '../redux/favorite/actionCreators';
 import { fetchReservations, deleteReservation } from '../redux/reservation/actionCreators';
+import { fetchRates } from '../redux/rate/actionCreators';
 import Beers from './Beers';
 import Favorites from './Favorite';
 import BeerDetail from './BeerDetail';
 import Home from './Home';
 import LoginForm from './LoginForm';
+import Signin from './Signin';
+import SigninForm from './SigninForm';
 import Reservations from './Reservations';
 import Header from './Header';
+import Footer from './Footer';
 
 const mapStateToProps = state => {
   return {
@@ -22,6 +26,7 @@ const mapStateToProps = state => {
     auth: state.auth,
     favorites: state.favorites,
     reservations: state.reservations,
+    rates: state.rates,
   }
 }
 
@@ -29,7 +34,9 @@ const mapDispatchToProps = dispatch => ({
   postComment: (beerId, rating, comment) => dispatch(postComment(beerId, rating, comment)),
   fetchComments: (beerId, page) => dispatch(fetchComments(beerId, page)),
   fetchBeers: () => { dispatch(fetchBeers())},
+  fetchRates: () => { dispatch(fetchRates())},
   loginUser: (creds) => dispatch(loginUser(creds)),
+  signinUser: (creds) => dispatch(signinUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
   fetchFavorites: () => dispatch(fetchFavorites()),
   postFavorite: (beerId) => dispatch(postFavorite(beerId)),
@@ -41,7 +48,9 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
 
   componentDidMount() {
+    console.log(this.props.fetchRates())
     this.props.fetchBeers();
+    this.props.fetchRates();
     this.props.fetchComments();
     this.props.fetchReservations();
     if (this.props.auth.isAuthenticated === true) {
@@ -95,18 +104,21 @@ class Main extends Component {
           <Header auth={this.props.auth} 
               loginUser={this.props.loginUser} 
               logoutUser={this.props.logoutUser} 
-            />  
-            <Switch>
-              <Route exact path='/' component={Home} />
+          />  
+          <Switch>
+              <Route exact path='/' component={() => <Home rates={this.props.rates} />} />
               <Route exact path='/beers' component={() => <Beers beers={this.props.beers} isLoading={this.props.beers.isLoading} fetchComments={this.props.fetchComments} />} />
               <Route path='/beers/:beerId' component={BeerWithId} />
-              <Route exact path="/reservations" component={() => <Reservations reservations={this.props.reservations} deleteReservation={this.props.deleteReservation} />} />
+              <Route exact path="/reservations" component={() => <Reservations reservations={this.props.reservations} deleteReservation={this.props.deleteReservation} auth={this.props.auth} />} />
               <PrivateRoute exact path="/favorites" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
               <Route path='/login' component={() => <LoginForm auth={this.props.auth} 
                 loginUser={this.props.loginUser} 
                 logoutUser={this.props.logoutUser} />} 
               />
+              <Route path='/signin' component={() => <SigninForm auth={this.props.auth} signinUser={this.props.signinUser} />} />
+{/*               <Route path='/signin' component={() => <Signin auth={this.props.auth} signinUser={this.props.loginUser} />} /> */}
           </Switch>
+          <Footer />
         </Router>
     );
   }

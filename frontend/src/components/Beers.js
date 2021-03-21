@@ -46,7 +46,7 @@ import { baseUrl } from '../shared/baseUrl';
 
         if (props.beers.isLoading) {
             return(
-                <div className="container">
+                <div className="container component-container">
                     <div className="row">  
                         {/* <Loading /> */}
 						<h3>LOADING...</h3>
@@ -56,7 +56,7 @@ import { baseUrl } from '../shared/baseUrl';
         }
         else if (props.beers.errMess) {
             return(
-                <div className="container">
+                <div className="container component-container">
                     <div className="row"> 
                         <div className="col-12">
                             <h4>{props.beers.errMess}</h4>
@@ -67,7 +67,7 @@ import { baseUrl } from '../shared/baseUrl';
         }
         else
 			return (
-				<div className="container">
+				<div className="container component-container">
 					<div className="row">
 						<Breadcrumb>
 							<BreadcrumbItem><Link to="/">Home</Link></BreadcrumbItem>

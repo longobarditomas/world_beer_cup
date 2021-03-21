@@ -44,7 +44,7 @@ const Favorites = (props) => {
 
     if (props.favorites.isLoading) {
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     {/* <Loading /> */}
                     <h3>Is Loading...</h3>
@@ -54,7 +54,7 @@ const Favorites = (props) => {
     }
     else if (props.favorites.errMess) {
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     <h4>{props.favorites.errMess}</h4>
                 </div>
@@ -69,10 +69,10 @@ const Favorites = (props) => {
         });
 
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>My Activity</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
@@ -90,7 +90,7 @@ const Favorites = (props) => {
     }
     else {
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     <h4>You have no favorites</h4>
                 </div>

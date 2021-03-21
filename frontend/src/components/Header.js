@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavbarToggler, Collapse, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Navbar, NavbarBrand, Nav, NavItem, NavbarToggler, Collapse, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import { Link, NavLink } from 'react-router-dom';
 import Login from './Login';
 
 class Header extends Component {
@@ -99,30 +99,32 @@ class Header extends Component {
 
                 {/* LOGIN MODAL */}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-                    <ModalBody>
-                        {/* <Login /> */}
-                        <Form onSubmit={this.handleLogin}>
-                        <FormGroup>
-                            <Label htmlFor="email">email</Label>
-                            <Input type="text" id="email" name="email"
-                                innerRef={(input) => this.email = input} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="password">Password</Label>
-                            <Input type="password" id="password" name="password"
-                                innerRef={(input) => this.password = input}  />
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                            <Input type="checkbox" name="remember"
-                            innerRef={(input) => this.remember = input}  />
-                            Remember me
-                            </Label>
-                        </FormGroup>
-                        <Button type="submit" value="submit" color="primary">Login</Button>
-                        </Form>
-                    </ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                        <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                        <ModalBody>
+                            <FormGroup>
+                                <Label htmlFor="email">email</Label>
+                                <Input type="text" id="email" name="email"
+                                    innerRef={(input) => this.email = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Password</Label>
+                                <Input type="password" id="password" name="password"
+                                    innerRef={(input) => this.password = input}  />
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="checkbox" name="remember"
+                                    innerRef={(input) => this.remember = input}  />
+                                    Remember me
+                                </Label>
+                            </FormGroup>
+                            <div style={{textAlign: "right"}}>Not Registered? <Link to="/signin" onClick={() => this.toggleModal()}>Sign In</Link></div>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button type="submit" value="submit" color="primary">Login</Button>
+                        </ModalFooter>
+                    </Form>
                 </Modal>
                 
             </React.Fragment>

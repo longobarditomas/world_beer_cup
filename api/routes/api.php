@@ -29,7 +29,6 @@ Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/getComments/{beerID?}', [CommentController::class, 'getComments']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
-    Route::get('/book', [BookController::class, 'index']);
     Route::get('/reservations', [ReservationController::class, 'index']);
     
     Route::post('/comments', [CommentController::class, 'create']);

@@ -42,66 +42,72 @@ class ReservationForm extends Component {
     }
 
     render() {
-        return (
-            <Card style={{marginBottom: '20px'}}>
-                <CardBody>
-                    <Form model="feedback" onSubmit={(values) => this.handleSubmit(values) }>
-                        <Row className="form-group">
-                            <Label htmlFor="date" md={4} style={{textAlign: 'left'}}>Date*</Label>
-                            <Col md={8}>
-                                <DatePickerComponent />
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Label htmlFor="party" md={4} style={{textAlign: 'left'}}>Party size*</Label>
-                            <Col md={8}>
-                                <Control.select model=".party" name="party"
-                                    className="form-control" validators={{required, isNumber}}>
-                                    <option>Select</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                </Control.select>
-                                <Errors
-                                    className="text-danger"
-                                    model=".party"
-                                    show="touched"
-                                    messages={{
-                                        required: 'Required.',
-                                        isNumber: ' Please select.'
-                                    }}
-                                />
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Label htmlFor="requeriments" xs={12} style={{textAlign: 'left'}}>Special requirements</Label>
-                            <Col>
-                                <Control.textarea model=".requeriments" id="requeriments" name="requeriments"
-                                    rows="2"
-                                    className="form-control" 
-                                />
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Col>
-                                <Button type="submit" className="reservation-btn">Book a table</Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </CardBody>
-            </Card>
-        );
+        if (this.props.auth.isAuthenticated) {
+            return (
+                <Card style={{marginBottom: '20px'}}>
+                    <CardBody>
+                        <Form model="feedback" onSubmit={(values) => this.handleSubmit(values) }>
+                            <Row className="form-group">
+                                <Label htmlFor="date" md={4} style={{textAlign: 'left'}}>Date*</Label>
+                                <Col md={8}>
+                                    <DatePickerComponent />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="party" md={4} style={{textAlign: 'left'}}>Party size*</Label>
+                                <Col md={8}>
+                                    <Control.select model=".party" name="party"
+                                        className="form-control" validators={{required, isNumber}}>
+                                        <option>Select</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                    </Control.select>
+                                    <Errors
+                                        className="text-danger"
+                                        model=".party"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required.',
+                                            isNumber: ' Please select.'
+                                        }}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="requeriments" xs={12} style={{textAlign: 'left'}}>Special requirements</Label>
+                                <Col>
+                                    <Control.textarea model=".requeriments" id="requeriments" name="requeriments"
+                                        rows="2"
+                                        className="form-control" 
+                                    />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Col>
+                                    <Button type="submit" className="reservation-btn">Book a table</Button>
+                                </Col>
+                            </Row>
+                        </Form>
+                    </CardBody>
+                </Card>
+            );
+        } else {
+            return (
+                <div><Card><CardBody><h6>Please Login to make a Reservation.</h6></CardBody></Card></div>
+            )
+        }
     }
 }
 
 class RenderReservations extends Component {
     render() {
-        if (this.props.reservations) {
+        if (this.props.reservations.reservations) {
             const reservations = this.props.reservations.reservations.map((reservation) => {      
                 return (
                     <Card style={{marginBottom: '20px'}}>
@@ -137,7 +143,7 @@ const Reservations = (props) => {
 
     if (props.reservations.isLoading) {
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     {/* <Loading /> */}
                     <h3>Is Loading...</h3>
@@ -147,10 +153,10 @@ const Reservations = (props) => {
     }
     else {
         return(
-            <div className="container">
+            <div className="container component-container">
                 <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Reservations</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
@@ -165,7 +171,7 @@ const Reservations = (props) => {
                         <p>At World Beer Cup we take very seriously the distancing protocols required by the current situation both on the terrace and inside the bar.</p><br />
                     </div>
                     <div className="col-12 col-lg-4" style={{textAlign: 'center'}}>
-                        <ReservationForm reservations={props.reservations} deleteReservation={props.deleteReservation} />
+                        <ReservationForm reservations={props.reservations} deleteReservation={props.deleteReservation} auth={props.auth} />
                         <RenderReservations reservations={props.reservations} deleteReservation={props.deleteReservation} />
                     </div>
                 </div>

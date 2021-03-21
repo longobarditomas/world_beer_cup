@@ -8,14 +8,14 @@ export const requestLogin = (creds) => {
         creds
     }
 }
-  
+
 export const receiveLogin = (response) => {
     return {
         type: ActionTypes.LOGIN_SUCCESS,
         token: response.token
     }
 }
-  
+
 export const loginError = (message) => {
     return {
         type: ActionTypes.LOGIN_FAILURE,
@@ -39,7 +39,41 @@ export const loginUser = (creds) => (dispatch) => {
     });    
 
 }
-  
+
+export const requestSignin = (creds) => {
+    return {
+        type: ActionTypes.SIGNIN_REQUEST,
+        creds
+    }
+}
+
+export const receiveSignin = (response) => {
+    return {
+        type: ActionTypes.LOGIN_SUCCESS,
+        token: response.token
+    }
+}
+
+export const signinError = (message) => {
+    return {
+        type: ActionTypes.SIGNIN_FAILURE,
+        message
+    }
+}
+
+export const signinUser = (creds) => (dispatch) => {
+    dispatch(requestSignin(creds))
+    apiClient.get('/sanctum/csrf-cookie')
+    .then(response => {
+        apiClient.post('/register', creds)
+        .then(response => {
+            console.log('responseee', response)
+            dispatch(receiveSignin(response));
+        }).catch(error => console.log('errror', error.message)  /* dispatch(loginError(error.message)) */)
+    });    
+
+}
+
 export const requestLogout = () => {
     return {
       type: ActionTypes.LOGOUT_REQUEST

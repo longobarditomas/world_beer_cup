@@ -30,6 +30,25 @@ switch (action.type) {
             isAuthenticated: false,
             errMess: action.message
         };
+    case ActionTypes.SIGNIN_REQUEST:
+        return {...state,
+            isLoading: true,
+            isAuthenticated: false,
+            user: action.creds
+        };
+    case ActionTypes.SIGNIN_SUCCESS:
+        return {...state,
+            isLoading: false,
+            isAuthenticated: false,
+            token: '',
+            user: null
+        };
+    case ActionTypes.SIGNIN_FAILURE:
+        return {...state,
+            isLoading: false,
+            isAuthenticated: false,
+            errMess: action.message
+        };
     case ActionTypes.LOGOUT_REQUEST:
         return {...state,
             isLoading: true,
