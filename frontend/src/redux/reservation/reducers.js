@@ -15,6 +15,10 @@ export const reservationReducer = (state = {
         case ActionTypes.RESERVATIONS_FAILED:
             return {...state, isLoading: false, errMess: action.payload, reservations: null};
 
+        case ActionTypes.ADD_RESERVATION:
+            var reservation = action.payload;
+            return { ...state, reservations: state.reservations.concat(reservation)};
+
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardImg, CardText, CardBody, CardTitle, CardGroup, Breadcrumb, BreadcrumbItem, Row, Col} from 'reactstrap';
 import { Link } from 'react-router-dom';
 /* import { Loading } from './Loading'; */
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from '../../shared/baseUrl';
 
 	function RenderMenuItem({ beer, fetchComments }) {
 		return(

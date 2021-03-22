@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, NavbarToggler, Collapse, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
-import Login from './Login';
 
 class Header extends Component {
 

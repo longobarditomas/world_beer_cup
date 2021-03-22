@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, NavLink, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 /* import { actions } from 'react-redux-form'; */
 import { loginUser, logoutUser, signinUser } from '../redux/auth/actionCreators';
 import { fetchBeers } from '../redux/beer/actionCreators';
 import { fetchComments, postComment } from '../redux/comment/actionCreators';
 import { fetchFavorites, postFavorite, deleteFavorite } from '../redux/favorite/actionCreators';
-import { fetchReservations, deleteReservation } from '../redux/reservation/actionCreators';
+import { fetchReservations, postReservation, deleteReservation } from '../redux/reservation/actionCreators';
 import { fetchRates } from '../redux/rate/actionCreators';
-import Beers from './Beers';
-import Favorites from './Favorite';
-import BeerDetail from './BeerDetail';
+import Beers from './Beer/Beers';
+import Favorites from './Favorite/Favorites';
+import BeerDetail from './Beer/BeerDetail';
 import Home from './Home';
-import LoginForm from './LoginForm';
-import Signin from './Signin';
-import SigninForm from './SigninForm';
-import Reservations from './Reservations';
+import Login from './Auth/Login';
+import SignIn from './Auth/SignIn';
+import Reservations from './Reservation/Reservations';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -42,6 +41,7 @@ const mapDispatchToProps = dispatch => ({
   postFavorite: (beerId) => dispatch(postFavorite(beerId)),
   deleteFavorite: (beerId) => dispatch(deleteFavorite(beerId)),
   fetchReservations: () => dispatch(fetchReservations()),
+  postReservation: (data) => dispatch(postReservation(data)),
   deleteReservation: (reservationId) => dispatch(deleteReservation(reservationId)),
 });
 
@@ -101,22 +101,15 @@ class Main extends Component {
 
     return (
         <Router>
-          <Header auth={this.props.auth} 
-              loginUser={this.props.loginUser} 
-              logoutUser={this.props.logoutUser} 
-          />  
+          <Header auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} />  
           <Switch>
               <Route exact path='/' component={() => <Home rates={this.props.rates} />} />
               <Route exact path='/beers' component={() => <Beers beers={this.props.beers} isLoading={this.props.beers.isLoading} fetchComments={this.props.fetchComments} />} />
               <Route path='/beers/:beerId' component={BeerWithId} />
-              <Route exact path="/reservations" component={() => <Reservations reservations={this.props.reservations} deleteReservation={this.props.deleteReservation} auth={this.props.auth} />} />
+              <Route exact path="/reservations" component={() => <Reservations reservations={this.props.reservations} postReservation={this.props.postReservation} deleteReservation={this.props.deleteReservation} auth={this.props.auth} />} />
               <PrivateRoute exact path="/favorites" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
-              <Route path='/login' component={() => <LoginForm auth={this.props.auth} 
-                loginUser={this.props.loginUser} 
-                logoutUser={this.props.logoutUser} />} 
-              />
-              <Route path='/signin' component={() => <SigninForm auth={this.props.auth} signinUser={this.props.signinUser} />} />
-{/*               <Route path='/signin' component={() => <Signin auth={this.props.auth} signinUser={this.props.loginUser} />} /> */}
+              <Route path='/login' component={() => <Login auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} />} />
+              <Route path='/signin' component={() => <SignIn auth={this.props.auth} signinUser={this.props.signinUser} />} />
           </Switch>
           <Footer />
         </Router>

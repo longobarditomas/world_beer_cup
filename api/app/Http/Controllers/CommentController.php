@@ -20,7 +20,7 @@ class CommentController extends Controller {
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        return response()->json(Comment::with('beer', 'user')->orderBy('created_at', 'desc')->first());
+        return response()->json($comment);
     }
 
     public function getComments(Request $request, $beerId = null) {

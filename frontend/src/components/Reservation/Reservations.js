@@ -1,8 +1,8 @@
 import React, { Component, useState } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Card, CardText, CardBody, CardTitle, CardHeader, Row, Label, Col } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Card, CardText, CardBody, CardHeader, Row, Label, Col } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from '../../shared/baseUrl';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays, addMonths, setHours, setMinutes } from "date-fns";
@@ -11,10 +11,11 @@ const required = (val) => val && val.length;
 const isNumber = (val) => !isNaN(Number(val));
 
 function DatePickerComponent() {
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date("2021/04/08 20:30"));
     return (
         <DatePicker
             onChange={date => setStartDate(date)} 
+            selected={startDate}
             showTimeSelect 
             minDate={subDays(new Date(), 0)} 
             maxDate={addMonths(new Date(), 2)} 
@@ -34,10 +35,9 @@ class ReservationForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(values) {
-        console.log(values);
-        /* this.props.postReservation(values);
-        this.props.resetReservationForm(); */
+    handleSubmit(data) {
+        this.props.postReservation(data);
+        /* this.props.resetReservationForm(); */
         // event.preventDefault();
     }
 
@@ -46,7 +46,7 @@ class ReservationForm extends Component {
             return (
                 <Card style={{marginBottom: '20px'}}>
                     <CardBody>
-                        <Form model="feedback" onSubmit={(values) => this.handleSubmit(values) }>
+                        <Form model="feedback" onSubmit={(data) => this.handleSubmit(data) }>
                             <Row className="form-group">
                                 <Label htmlFor="date" md={4} style={{textAlign: 'left'}}>Date*</Label>
                                 <Col md={8}>
@@ -171,7 +171,7 @@ const Reservations = (props) => {
                         <p>At World Beer Cup we take very seriously the distancing protocols required by the current situation both on the terrace and inside the bar.</p><br />
                     </div>
                     <div className="col-12 col-lg-4" style={{textAlign: 'center'}}>
-                        <ReservationForm reservations={props.reservations} deleteReservation={props.deleteReservation} auth={props.auth} />
+                        <ReservationForm reservations={props.reservations} postReservation={props.postReservation} deleteReservation={props.deleteReservation} auth={props.auth} />
                         <RenderReservations reservations={props.reservations} deleteReservation={props.deleteReservation} />
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Breadcrumb, BreadcrumbItem, Nav, NavItem, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 
-class SigninForm extends Component {
+class SignIn extends Component {
 
     constructor(props) {
         super(props);
@@ -74,4 +74,4 @@ class SigninForm extends Component {
     }
 }
 
-export default SigninForm;
+export default SignIn;

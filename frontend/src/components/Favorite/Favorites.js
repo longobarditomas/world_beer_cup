@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Media, Breadcrumb, BreadcrumbItem, Button, Card, CardImg, CardBody, CardTitle, CardText, CardGroup, Row, Col } from 'reactstrap';
+import React from 'react';
+import { Breadcrumb, BreadcrumbItem, Button, Card, CardImg, CardBody, CardTitle, CardText, CardGroup, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from '../../shared/baseUrl';
 
 function RenderMenuItem({ beer, deleteFavorite }) {
     return(

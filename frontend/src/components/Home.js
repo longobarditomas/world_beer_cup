@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Button, Card, CardImg, CardBody, CardTitle, CardText, CardGroup, Row, Col, CardHeader, Table } from 'reactstrap';
+import { Row, Col, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import apiClient from '../services/api';
 import { baseUrl } from '../shared/baseUrl';
 
 class Rankings extends Component {

@@ -30,12 +30,13 @@ Route::get('/getComments/{beerID?}', [CommentController::class, 'getComments']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/reservations', [ReservationController::class, 'index']);
+    Route::post('/reservations', [ReservationController::class, 'store']);
+    Route::get('/reservations/{reservationID?}', [ReservationController::class, 'show']);
+    Route::delete('/reservations/{reservationID?}', [ReservationController::class, 'destroy']);
     
     Route::post('/comments', [CommentController::class, 'create']);
     
     Route::get('/favorites', [FavoriteController::class, 'index']);
     Route::post('/favorites', [FavoriteController::class, 'create']);
     Route::delete('/favorites/{beerID?}', [FavoriteController::class, 'delete']);
-
-    Route::get('/reservations/{reservationID?}', [ReservationController::class, 'show']);
 });

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Breadcrumb, BreadcrumbItem, Nav, NavItem, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -20,7 +20,7 @@ class LoginForm extends Component {
     }
 
     handleLogin(event) {
-        this.props.loginUser({email: this.email.value, password: this.password.value});
+        this.props.loginUser({email: this.email.value, password: this.password.value, remember: this.remember.value});
         event.preventDefault();
     }
 

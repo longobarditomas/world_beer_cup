@@ -1,15 +1,6 @@
 import * as ActionTypes from './actions';
 import apiClient from '../../services/api';
 import { baseUrl } from '../../shared/baseUrl';
-    
-export const deleteReservation = (reservationId) => (dispatch) => {
-    apiClient.delete(baseUrl + 'reservations/' + reservationId)
-    .then(response => {
-        return response.data;
-    })
-    .then(reservations => dispatch(addReservations(reservations)))
-    .catch(error => dispatch(reservationsFailed(error.message)));
-};
 
 export const fetchReservations = () => (dispatch) => {
     dispatch(reservationsLoading(true));
@@ -44,3 +35,26 @@ export const addReservations = (reservations) => ({
     type: ActionTypes.ADD_RESERVATIONS,
     payload: reservations
 });
+
+export const addReservation = (reservation) => ({
+    type: ActionTypes.ADD_RESERVATION,
+    payload: reservation
+});
+
+export const postReservation = (data) => (dispatch) => {
+    apiClient.post(baseUrl + 'reservations', data)
+    .then(response => {
+        console.log('response reservation', response)
+        return response.data;
+    })
+    .then(reservation => dispatch(addReservation(reservation)));
+}
+
+export const deleteReservation = (reservationId) => (dispatch) => {
+    apiClient.delete(baseUrl + 'reservations/' + reservationId)
+    .then(response => {
+        return response.data;
+    })
+    .then(reservations => dispatch(addReservations(reservations)))
+    .catch(error => dispatch(reservationsFailed(error.message)));
+};

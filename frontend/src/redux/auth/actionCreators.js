@@ -1,6 +1,5 @@
 import * as ActionTypes from './actions';
 import apiClient from '../../services/api';
-import { baseUrl } from '../../shared/baseUrl';
 
 export const requestLogin = (creds) => {
     return {
@@ -92,6 +91,7 @@ export const logoutUser = () => (dispatch) => {
         if (response.status === 204) {
             localStorage.removeItem('token');
             localStorage.removeItem('loggedIn');
+            dispatch(receiveLogout(response));
         }
     })
 }
