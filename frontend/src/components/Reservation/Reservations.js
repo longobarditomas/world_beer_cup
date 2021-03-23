@@ -11,7 +11,8 @@ const required = (val) => val && val.length;
 const isNumber = (val) => !isNaN(Number(val));
 
 function DatePickerComponent() {
-    const [startDate, setStartDate] = useState(new Date("2021/04/08 20:30"));
+    var today = new Date();
+    const [startDate, setStartDate] = useState(new Date(today.getFullYear()+"/"+(today.getMonth()+2)+"/"+today.getDate()+" 20:30"));
     return (
         <DatePicker
             onChange={date => setStartDate(date)} 

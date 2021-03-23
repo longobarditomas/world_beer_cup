@@ -7,7 +7,7 @@ import { baseUrl } from '../../shared/baseUrl';
 	function RenderMenuItem({ beer, fetchComments }) {
 		return(
 			<Card className={`beer-color-${beer.category}`}>
-				<Link /* onClick={() => fetchComments(beer.id)} */ to={`/beers/${beer.id}`} style={{textDecoration: 'none'}}>
+				<Link to={`/beers/${beer.id}`} style={{textDecoration: 'none'}}>
                     <CardImg top src={baseUrl + beer.image} alt={beer.name} />
                     <CardBody style={{ minHeight: '4rem' }}>
                         <CardTitle>

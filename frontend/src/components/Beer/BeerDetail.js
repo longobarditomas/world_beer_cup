@@ -106,9 +106,6 @@ class RenderComments extends Component {
 	}
 	
 	render() {
-		console.log('HHH');
-		console.log(this.props.comments);
-		console.log(this.props.comments.length);
 		if (this.props.comments != null) {
 			const comentarios = this.props.comments.slice(this.state.countFrom, this.state.countTo).map(comment => {
 				return (
@@ -122,9 +119,6 @@ class RenderComments extends Component {
 			return (
 				<div className="row col-12 col-md-6">
 					<div className="col-1 align-h">
-				{/* 	{this.props.commentPagination.currentPage > 1 ? 
-						<Button onClick={() => this.props.fetchComments(this.props.beerId, this.props.commentPagination.currentPage-1)} color="black"><i class="fa fa-arrow-left"></i></Button>
-					: '' } */}
 					{!this.state.firstPage ?
 						<Button onClick={() => this.prevPage()} color="black"><i class="fa fa-arrow-left"></i></Button>
 					: ''}
@@ -140,9 +134,6 @@ class RenderComments extends Component {
 					{!this.state.lastPage ?
 						<Button onClick={() => this.nextPage()} color="black"><i class="fa fa-arrow-right"></i></Button>
 					: ''}
-				{/* 	{this.props.commentPagination.currentPage < this.props.commentPagination.lastPage ? 
-						<Button onClick={() => this.props.fetchComments(this.props.beerId, this.props.commentPagination.currentPage+1)} color="black"><i class="fa fa-arrow-right"></i></Button>
-					: '' } */}
 					</div>
 				</div>
 			)
@@ -239,7 +230,6 @@ const Beer = (props) => {
 						postComment={props.postComment}
 						beerId={props.beer.id}
 						fetchComments={props.fetchComments}
-						/* commentPagination={props.commentPagination} */
 					/>
 				</div>
 			</div>
