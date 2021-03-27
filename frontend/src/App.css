@@ -155,3 +155,12 @@ a:hover {
   background-color: #C63B1D;
   border: none;
 }
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .rank-display {
+    display: none;
+  }
+}

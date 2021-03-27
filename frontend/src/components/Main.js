@@ -11,7 +11,7 @@ import { fetchRates } from '../redux/rate/actionCreators';
 import Beers from './Beer/Beers';
 import Favorites from './Favorite/Favorites';
 import BeerDetail from './Beer/BeerDetail';
-import Home from './Home';
+import Home from './Home/Home';
 import Login from './Auth/Login';
 import SignIn from './Auth/SignIn';
 import Reservations from './Reservation/Reservations';
