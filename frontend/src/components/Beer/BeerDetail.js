@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrum
 import { Link, useHistory } from 'react-router-dom';
 import { baseUrl } from '../../shared/baseUrl';
 import Comments from './Comment/Comments';
-/* import { Loading } from './Loading'; */
+import { Loading } from '../Loading';
 
 function RenderBeer({beer, favorite, postFavorite, auth}) {
 	const history = useHistory();
@@ -52,8 +52,7 @@ const Beer = (props) => {
 		return(
 			<div className="container">
 				<div className="row">            
-					{/* <Loading /> */}
-					<h3>LOADING...</h3>
+					<Loading />
 				</div>
 			</div>
 		);

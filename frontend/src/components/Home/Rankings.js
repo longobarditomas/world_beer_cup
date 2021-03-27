@@ -5,7 +5,7 @@ import { baseUrl } from '../../shared/baseUrl';
 
 function Rankings( props ) {
     const topBeers = props.rates.rates.map((beer, index) => 
-        <tr> 
+        <tr key={`ranking-${index+1}`}> 
             <td className="rank-display">{index+1}</td>
             <td>
                 <Link to={`/beers/${beer.beer.id}`} style={{textDecoration: 'none'}}>

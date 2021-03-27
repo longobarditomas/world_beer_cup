@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Row, Col, Label } from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
-/* import { Loading } from './Loading'; */
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);

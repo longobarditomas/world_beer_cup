@@ -66,7 +66,6 @@ export const signinUser = (creds) => (dispatch) => {
     .then(response => {
         apiClient.post('/register', creds)
         .then(response => {
-            console.log('responseee', response)
             dispatch(receiveSignin(response));
         }).catch(error => console.log('errror', error.message)  /* dispatch(loginError(error.message)) */)
     });    

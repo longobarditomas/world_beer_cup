@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardImg, CardText, CardBody, CardTitle, CardGroup, Breadcrumb, BreadcrumbItem, Row, Col} from 'reactstrap';
 import { Link } from 'react-router-dom';
-/* import { Loading } from './Loading'; */
+import { Loading } from '../Loading';
 import { baseUrl } from '../../shared/baseUrl';
 
 	function RenderMenuItem({ beer, fetchComments }) {
@@ -48,8 +48,7 @@ import { baseUrl } from '../../shared/baseUrl';
             return(
                 <div className="container component-container">
                     <div className="row">  
-                        {/* <Loading /> */}
-						<h3>LOADING...</h3>
+                        <Loading />
                     </div>
                 </div>
             );

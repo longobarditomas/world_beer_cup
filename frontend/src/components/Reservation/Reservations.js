@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Card, CardText, CardBody, CardHeader, Row, Label, Col } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Loading';
 import { baseUrl } from '../../shared/baseUrl';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -146,8 +147,7 @@ const Reservations = (props) => {
         return(
             <div className="container component-container">
                 <div className="row">
-                    {/* <Loading /> */}
-                    <h3>Is Loading...</h3>
+                    <Loading />
                 </div>
             </div>
         );

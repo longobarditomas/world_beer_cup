@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Card, CardImg, CardBody, CardTitle, CardText, CardGroup, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../../shared/baseUrl';
+import { Loading } from '../Loading';
 
 function RenderMenuItem({ beer, deleteFavorite }) {
     return(
@@ -17,12 +18,12 @@ function RenderMenuItem({ beer, deleteFavorite }) {
                                     <span className="fa fa-times"></span>
                                 </Button>
                             </div>
-                        <CardBody style={{padding:'0px',marginRight: '15px'}}>
-                            <CardTitle style={{color: 'white', fontSize:'0.8rem'}}>{beer.name}</CardTitle>
+                        <CardBody className="fav-card">
+                            <CardTitle className="fav-title">{beer.name}</CardTitle>
                             <CardText tag="div">
                                 <hr style={{backgroundColor: 'white'}}/>
                                 <div className="item-type">
-                                    <Row xs="3" className="show-grid" style={{fontSize:'0.4rem'}}>
+                                    <Row xs="3" className="show-grid fav-details">
                                         <Col><b>Alcohol</b></Col>
                                         <Col><b>Country</b></Col>
                                         <Col><b>Color</b></Col>
@@ -46,8 +47,7 @@ const Favorites = (props) => {
         return(
             <div className="container component-container">
                 <div className="row">
-                    {/* <Loading /> */}
-                    <h3>Is Loading...</h3>
+                    <Loading />
                 </div>
             </div>
         );

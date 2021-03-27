@@ -84,7 +84,7 @@ class Header extends Component {
                                     </DropdownItem>
                                     </NavLink>
                                     <DropdownItem divider />
-                                    <DropdownItem outline onClick={this.handleLogout}>
+                                    <DropdownItem onClick={this.handleLogout}>
                                         Logout
                                     </DropdownItem>
                                 </DropdownMenu>

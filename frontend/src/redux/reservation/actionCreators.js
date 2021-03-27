@@ -44,7 +44,6 @@ export const addReservation = (reservation) => ({
 export const postReservation = (data) => (dispatch) => {
     apiClient.post(baseUrl + 'reservations', data)
     .then(response => {
-        console.log('response reservation', response)
         return response.data;
     })
     .then(reservation => dispatch(addReservation(reservation)));

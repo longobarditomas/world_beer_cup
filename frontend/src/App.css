@@ -138,6 +138,20 @@ a:hover {
   text-align: left;
 }
 
+.pag-arrow {
+  padding-top: 250px;
+}
+
+.pag-button {
+  padding: 0px;
+}
+
+/* @media only screen and (max-width: 600px) {
+  .pag-arrow {
+    display: none;
+  }
+} */
+
 .align-h {
   display:flex;
   justify-content:center;
@@ -162,5 +176,31 @@ a:hover {
 @media only screen and (max-width: 600px) {
   .rank-display {
     display: none;
+  }
+}
+
+/* FAVORITES */
+
+.fav-card {
+  padding: 0px;
+  margin-right: 15px;
+}
+
+.fav-title {
+  color: white;
+  font-size: 20px;
+}
+
+.fav-details {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+  .fav-title {
+    font-size: 14px;
+  }
+
+  .fav-details {
+    font-size: 8px;
   }
 }

@@ -48,7 +48,6 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
 
   componentDidMount() {
-    console.log(this.props.fetchRates())
     this.props.fetchBeers();
     this.props.fetchRates();
     this.props.fetchComments();
@@ -70,13 +69,13 @@ class Main extends Component {
     const BeerWithId = ({match}) => {
       return(
         this.props.favorites.favorites || !this.props.auth.isAuthenticated ?  
-        <BeerDetail beer={this.props.beers.beers.filter((beer) => beer.id == match.params.beerId)[0]} 
+        <BeerDetail beer={this.props.beers.beers.filter((beer) => beer.id === Number(match.params.beerId))[0]} 
           isLoading={this.props.beers.isLoading}
           errMess={this.props.beers.errMess}
-          favorite={this.props.auth.isAuthenticated ? this.props.favorites.favorites.some((favorite) => favorite.beerID == match.params.beerId) : false}
+          favorite={this.props.auth.isAuthenticated ? this.props.favorites.favorites.some((favorite) => favorite.beerID === Number(match.params.beerId)) : false}
           postFavorite={this.props.postFavorite}
           fetchComments={this.props.fetchComments}
-          comments={this.props.comments.comments.filter((comment) => comment.beerID == match.params.beerId)}
+          comments={this.props.comments.comments.filter((comment) => comment.beerID === Number(match.params.beerId))}
           commentsErrMess={this.props.comments.errMess}
           postComment={this.props.postComment}
           auth={this.props.auth.isAuthenticated}
