@@ -5,10 +5,10 @@ function Footer(props) {
         <div className="background-header" style={{color: "white", paddingTop: "40px", marginTop: "40px", /* position: "absolute", left: 0, bottom: 0, right: 0 */}}>
             <div className="container">
                 <div className="row">             
-                    <div className="col-4" style={{textAlign: "left"}}>
+                    <div className="col-md-4" style={{textAlign: "left"}}>
                         <h2 style={{fontFamily: 'FiraSans-Light'}}>World Beer Cup</h2>
                     </div>
-                    <div className="col-4" style={{textAlign: "left"}}>
+                    <div className="col-md-4" style={{textAlign: "left"}}>
                         <h4 style={{fontFamily: 'FiraSans-Light'}}>Information</h4>
                         <address>
                         459, Vellore Park Ave<br />
@@ -17,7 +17,7 @@ function Footer(props) {
                         <i className="fa fa-envelope fa-lg"></i><a href="mailto:worldcupburger@gmail.com" style={{color: "white"}}> worldcupburger@gmail.com</a>
                         </address>
                     </div>
-                    <div className="col-4 align-self-center">
+                    <div className="col-md-4 align-self-center">
                         <div className="text-center">
                             <a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus" style={{color: "white"}}></i></a>
                             <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook" style={{color: "white"}}></i></a>
