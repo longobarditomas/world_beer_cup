@@ -78,7 +78,7 @@ class Main extends Component {
           comments={this.props.comments.comments.filter((comment) => comment.beerID === Number(match.params.beerId))}
           commentsErrMess={this.props.comments.errMess}
           postComment={this.props.postComment}
-          auth={this.props.auth.isAuthenticated}
+          auth={this.props.auth}
         />
         :
         <Redirect to={{

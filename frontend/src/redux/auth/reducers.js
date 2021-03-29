@@ -8,7 +8,8 @@ export const AuthReducer = (state = {
     isAuthenticated: localStorage.getItem('token') ? true : false,
     token: localStorage.getItem('token'),
     user: localStorage.getItem('creds') ? JSON.parse(localStorage.getItem('creds')) : null,
-    errMess: null
+    errMess: null,
+    errors: null
 }, action) => {
 switch (action.type) {
     case ActionTypes.LOGIN_REQUEST:
@@ -22,13 +23,15 @@ switch (action.type) {
             isLoading: false,
             isAuthenticated: true,
             errMess: '',
+            errors: null,
             token: action.token
         };
     case ActionTypes.LOGIN_FAILURE:
         return {...state,
             isLoading: false,
             isAuthenticated: false,
-            errMess: action.message
+            errMess: action.message,
+            errors: action.errors
         };
     case ActionTypes.SIGNIN_REQUEST:
         return {...state,

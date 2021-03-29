@@ -13,7 +13,7 @@ function RenderBeer({beer, favorite, postFavorite, auth}) {
 				<Card className={`beer-color-${beer.category}`}>
 					<CardImg top src={baseUrl + beer.image} alt={beer.name} />
 					<CardImgOverlay>
-							<Button outline className={`pull-right beer-color-text-${beer.category}`} color="primary" onClick={() => !auth ? history.push('/login') : favorite ? console.log('Already favorite') : postFavorite(beer.id)}>
+							<Button outline className={`pull-right beer-color-text-${beer.category}`} color="primary" onClick={() => !auth.isAuthenticated ? history.push('/login') : favorite ? false : postFavorite(beer.id)}>
 								{favorite ?
 									<span className="fa fa-heart"></span>
 									: 
@@ -85,6 +85,7 @@ const Beer = (props) => {
 						postComment={props.postComment}
 						beerId={props.beer.id}
 						fetchComments={props.fetchComments}
+						auth={props.auth}
 					/>
 				</div>
 			</div>

@@ -15,16 +15,16 @@ export const receiveLogin = (response) => {
     }
 }
 
-export const loginError = (message) => {
+export const loginError = (message, errors) => {
     return {
         type: ActionTypes.LOGIN_FAILURE,
-        message
+        message,
+        errors
     }
 }
 
 export const loginUser = (creds) => (dispatch) => {
     dispatch(requestLogin(creds))
-
     apiClient.get('/sanctum/csrf-cookie')
     .then(response => {
         apiClient.post('/login', creds)
@@ -32,9 +32,10 @@ export const loginUser = (creds) => (dispatch) => {
             localStorage.setItem('token', response.config.headers['X-XSRF-TOKEN']);
             localStorage.setItem('loggedIn', true);
             dispatch(receiveLogin(response));
-            /* dispatch(fetchFavorites()); */
-            /* history.push('/beers'); */
-        }).catch(error => dispatch(loginError(error.message)))
+        }).catch(error => {
+            if (error.response.status === 422) dispatch(loginError(error.message, error.response.data.errors))
+            else dispatch(loginError(error.message, null))
+        })
     });    
 
 }

@@ -64,7 +64,7 @@ const Favorites = (props) => {
     else if (props.favorites.favorites) {
         const favorites = props.favorites.favorites.map((favorite) => {      
             return (
-                <RenderMenuItem beer={favorite.beer} deleteFavorite={props.deleteFavorite} />
+                <RenderMenuItem key={`fav-${favorite.beer.id}`} beer={favorite.beer} deleteFavorite={props.deleteFavorite} />
             );
         });
 

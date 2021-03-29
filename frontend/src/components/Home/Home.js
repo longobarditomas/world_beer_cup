@@ -12,7 +12,7 @@ const Home = (props) => {
                     <hr />
                 </div>
             </div>
-            <img src={baseUrl + 'images/home.jpg'} style={{width:'100%', marginBottom: '40px'}} />
+            <img src={baseUrl + 'images/home.jpg'} style={{width:'100%', marginBottom: '40px'}} alt="world beer cup" />
             <Row style={{paddingTop: "40px", paddingBottom: "40px"}}>
                 <Col md="4">
                     <h3 style={{fontFamily: 'FiraSans-Light'}}>1</h3>

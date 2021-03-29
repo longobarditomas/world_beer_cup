@@ -32,7 +32,6 @@ class RenderComments extends Component {
 			lastPage: this.state.lastComment >= (this.state.countFrom+5) && this.state.lastComment <= (this.state.countTo+5) ? true : false
 		});
 	}
-	
 	render() {
 		if (this.props.comments != null) {
 			const comentarios = this.props.comments.slice(this.state.countFrom, this.state.countTo).map(comment => {
@@ -49,7 +48,7 @@ class RenderComments extends Component {
 					<div className="row">
 						<div className="col-1 pag-arrow">
 						{!this.state.firstPage ?
-							<Button className="pag-button" onClick={() => this.prevPage()} color="black"><i class="fa fa-arrow-left"></i></Button>
+							<Button className="pag-button" onClick={() => this.prevPage()} color="black"><i className="fa fa-arrow-left"></i></Button>
 						: ''}
 						</div>
 						<div className="col-10">
@@ -57,11 +56,13 @@ class RenderComments extends Component {
 							<ul className='list-unstyled'>
 								{comentarios}
 							</ul>
+						{ this.props.auth.isAuthenticated ?  
 							<CommentForm beerId={this.props.beerId} postComment={this.props.postComment} />
+						: ''}
 						</div>
 						<div className="col-1 pag-arrow">
 						{!this.state.lastPage ?
-							<Button className="pag-button" onClick={() => this.nextPage()} color="black"><i class="fa fa-arrow-right"></i></Button>
+							<Button className="pag-button" onClick={() => this.nextPage()} color="black"><i className="fa fa-arrow-right"></i></Button>
 						: ''}
 						</div>
 					</div>
@@ -72,7 +73,9 @@ class RenderComments extends Component {
 			return (
 				<div className="col-12 col-md-6">
 					<h4 className='App-subtitle'>Comments</h4>
+				{ this.props.auth.isAuthenticated ?  
 					<CommentForm beerId={this.props.beerId} postComment={this.props.postComment} />
+				: ''}
 				</div>
 			)
 		} 

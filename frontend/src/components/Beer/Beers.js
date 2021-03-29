@@ -15,7 +15,7 @@ import { baseUrl } from '../../shared/baseUrl';
 								<h5>{beer.name}</h5>
 							</div>
 						</CardTitle>
-                        <CardText>
+                        <CardText tag="div">
 							<hr style={{backgroundColor: 'white'}}/>
 							<div className="item-type">
 								<Row xs="3" className="show-grid">
