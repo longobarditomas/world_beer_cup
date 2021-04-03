@@ -17,7 +17,7 @@ class ReservationController extends Controller
             'userID'       => $request->user()->id,
             'party'        => $request->input('party'),
             'requeriments' => $request->input('requeriments'),
-            'date'         => $request->input('date'),
+            'date'         => date('Y-m-d H:i:s', strtotime($request->input('date'))),
             'created_at'   => now(),
             'updated_at'   => now(),
         ]);

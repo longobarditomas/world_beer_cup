@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Row, Col } from 'reactstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { baseUrl } from '../../shared/baseUrl';
-import Comments from './Comment/Comments';
 import { Loading } from '../Loading';
+import Comments from './Comment/Comments';
 
 function RenderBeer({beer, favorite, postFavorite, auth}) {
 	const history = useHistory();

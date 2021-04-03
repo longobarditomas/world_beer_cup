@@ -48,14 +48,6 @@ class CommentForm extends Component {
 									</Control.select>
 								</Col>
 							</Row>
-							{/* <Row className="form-group">
-								<Label htmlFor="comment" md={12}>Comment</Label>
-								<Col md={12}>
-									<Control.textarea model=".comment" id="comment" name="comment"
-										rows="6"
-										className="form-control" />
-								</Col>
-							</Row> */}
 							<Row className="form-group">
 								<Label htmlFor="comment" md={12}>Comment</Label>
 								<Col md={12}>
