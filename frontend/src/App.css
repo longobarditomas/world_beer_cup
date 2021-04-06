@@ -134,8 +134,22 @@ a:hover {
 
 /* RESERVATIONS */
 
-.r-description {
-  text-align: left;
+.reservations .description {
+  text-align: center;
+}
+
+.reservations .fa {
+  padding: 10px;
+  font-size: 30px;
+}
+
+.reservations .card {
+  margin-bottom: 20px;
+}
+
+.reservations .card-header {
+  background-color: #333333; 
+  color: white;
 }
 
 .pag-arrow {

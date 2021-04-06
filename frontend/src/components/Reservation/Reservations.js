@@ -10,8 +10,8 @@ class RenderReservations extends Component {
         if (this.props.reservations.reservations) {
             const reservations = this.props.reservations.reservations.map((reservation) => {      
                 return (
-                    <Card style={{marginBottom: '20px'}} key={`reservation-${reservation.id}`}>
-                        <CardHeader style={{ backgroundColor: '#333333', color: 'white' }}>
+                    <Card key={`reservation-${reservation.id}`}>
+                        <CardHeader>
                             <div><h6>My Reservation</h6></div>
                         </CardHeader>
                         <CardBody>
@@ -52,7 +52,7 @@ const Reservations = (props) => {
     }
     else {
         return(
-            <div className="container component-container">
+            <div className="container component-container reservations">
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
@@ -64,9 +64,12 @@ const Reservations = (props) => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12 col-lg-8 r-description">
+                    <div className="col-12 col-lg-8 description">
                         <img src={baseUrl + 'images/reservations.jpg'} style={{width:'100%', marginBottom: '40px'}} alt="reservations" />
+                        <i className="fa fa-cutlery" aria-hidden="true"></i>
                         <p>Book your table, come to try this year's selection of beers and choose your favorite! We will be waiting for you with cold beer and salty popcorn.</p><br />
+                        <i className="fa fa-users" aria-hidden="true"></i>
+                        <i className="fa fa-users" aria-hidden="true"></i>
                         <p>At World Beer Cup we take very seriously the distancing protocols required by the current situation both on the terrace and inside the bar.</p><br />
                     </div>
                     <div className="col-12 col-lg-4" style={{textAlign: 'center'}}>
