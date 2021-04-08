@@ -10,6 +10,8 @@
 
 ### Getting Started
 
+- Open the api folder in the console.
+- composer install
 - php artisan migrate
 - php artisan db:seed
 
