@@ -14,6 +14,7 @@
 - composer install
 - php artisan migrate
 - php artisan db:seed
+- php artisan serve
 
 
 ## Frontend
@@ -25,6 +26,7 @@
 
 ### Getting Started
 
+- Open the frontend folder in the console.
 - npm install
 - npm start
 
