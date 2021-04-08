@@ -59,10 +59,8 @@ class Main extends Component {
   
   componentDidUpdate(prevState) {
     if (prevState.auth.isAuthenticated !== this.props.auth.isAuthenticated) {
-      if (this.props.auth.isAuthenticated === true) {
-        this.props.fetchReservations();
-        this.props.fetchFavorites();
-      }
+      this.props.fetchReservations();
+      this.props.fetchFavorites();
     }
   }
 

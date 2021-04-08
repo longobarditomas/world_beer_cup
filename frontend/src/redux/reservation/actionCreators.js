@@ -4,15 +4,21 @@ import { baseUrl } from '../../shared/baseUrl';
 
 export const fetchReservations = () => (dispatch) => {
     dispatch(reservationsLoading(true));
-    apiClient.get(baseUrl + 'reservations')
-    .then(response => {
-        return response.data;
-    })
-    .then(reservations => dispatch(addReservations(reservations)))
-    .catch(error => {
-        dispatch(reservationsFailed(error.message));
-        handleError(error.response);
-    });
+    if (localStorage.getItem('token')) {
+        apiClient.get(baseUrl + 'reservations')
+        .then(response => {
+            return response.data;
+        })
+        .then(reservations => dispatch(addReservations(reservations)))
+        .catch(error => {
+            handleError(error.response);
+            dispatch(reservationsFailed(error.message));
+        });
+    } else {
+        localStorage.removeItem('token');
+        localStorage.removeItem('loggedIn');
+        dispatch(reservationsFailed('401'));
+    }
 }
 
 function handleError(response) {

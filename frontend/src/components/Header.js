@@ -75,16 +75,9 @@ class Header extends Component {
                             :
                                 <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
-                                    {/* {this.props.auth.user.email} */}
-                                    User
+                                    <i className="fa fa-user-circle-o" aria-hidden="true" ></i>
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <NavLink to="/user">
-                                    <DropdownItem>
-                                        Edit
-                                    </DropdownItem>
-                                    </NavLink>
-                                    <DropdownItem divider />
                                     <DropdownItem onClick={this.handleLogout}>
                                         Logout
                                     </DropdownItem>

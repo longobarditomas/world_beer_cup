@@ -22,15 +22,19 @@ export const deleteFavorite = (beerId) => (dispatch) => {
 
 export const fetchFavorites = () => (dispatch) => {
     dispatch(favoritesLoading(true));
-    apiClient.get(baseUrl + 'favorites')
-    .then(response => {
-        return response.data;
-    })
-    .then(favorites => dispatch(addFavorites(favorites)))
-    .catch(error => {
-        dispatch(favoritesFailed(error.message));
-        handleError(error.response);
-    });
+    if (localStorage.getItem('token')) {
+        apiClient.get(baseUrl + 'favorites')
+        .then(response => {
+            return response.data;
+        })
+        .then(favorites => dispatch(addFavorites(favorites)))
+        .catch(error => {
+            handleError(error.response);
+            dispatch(favoritesFailed(error.message));
+        });
+    } else {
+        dispatch(favoritesFailed('401'));
+    }
 }
 
 function handleError(response) {
