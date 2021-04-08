@@ -12,6 +12,7 @@
 
 - Open the api folder in the console.
 - composer install
+- In the .env file configure your database data. 
 - php artisan migrate
 - php artisan db:seed
 - php artisan serve
