@@ -40,13 +40,6 @@ export const fetchFavorites = () => (dispatch) => {
     }
 }
 
-function handleError(response) {
-    if (response.status === 401) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedIn');
-    }
-}
-
 export const favoritesLoading = () => ({
     type: ActionTypes.FAVORITES_LOADING
 });
