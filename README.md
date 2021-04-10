@@ -24,6 +24,7 @@
 
 - Javascript.
 - ReactJS.
+- Redux.
 
 ### Getting Started
 
