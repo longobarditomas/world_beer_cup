@@ -18,9 +18,6 @@
 - php artisan db:seed
 - php artisan serve
 
-#### Notes
-
-
 ## Frontend
 
 ### Technologies
@@ -35,6 +32,8 @@
 - npm install
 - npm start
 
+#### Notes
+- Login available using some of the test users. Ex.: bach@gmail.com (user), password (bach) 
 
 ## Developer
 
