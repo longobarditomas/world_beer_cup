@@ -11,8 +11,9 @@
 ### Getting Started
 
 - Open the api folder in the console.
+- Create .env file using as reference the .env.example file and configure your database data. 
 - composer install
-- In the .env file configure your database data. 
+- php artisan key:generate
 - php artisan migrate
 - php artisan db:seed
 - php artisan serve
