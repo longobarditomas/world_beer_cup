@@ -3,12 +3,12 @@
 
 ## API
 
-### Technologies
+#### Technologies
 
 - PHP.
 - Laravel (8.x).
 
-### Getting Started
+#### Getting Started
 
 - Open the api folder in the console.
 - Create .env file using as reference the .env.example file and configure your database data. 
@@ -20,13 +20,13 @@
 
 ## Frontend
 
-### Technologies
+#### Technologies
 
 - Javascript.
 - ReactJS.
 - Redux.
 
-### Getting Started
+#### Getting Started
 
 - Open the frontend folder in the console.
 - npm install
