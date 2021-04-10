@@ -50,7 +50,8 @@ switch (action.type) {
         return {...state,
             isLoading: false,
             isAuthenticated: false,
-            errMess: action.message
+            errMess: action.message,
+            errors: action.errors
         };
     case ActionTypes.LOGOUT_REQUEST:
         return {...state,

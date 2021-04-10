@@ -7,11 +7,6 @@ use App\Models\Beer;
 
 class BeerSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run() {
         $beers = [
             0 => [

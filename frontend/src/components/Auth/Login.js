@@ -49,6 +49,9 @@ class LoginForm extends Component {
                                     <Label htmlFor="email">Email</Label>
                                     <Input type="text" id="email" name="email"
                                         innerRef={(input) => this.email = input} />
+                                { this.props.auth.errors ?
+                                    <Label htmlFor="email" style={{color: "red"}}>{this.props.auth.errors.email ? this.props.auth.errors.email[0] : ''}</Label>
+                                : ''}
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="password">Password</Label>

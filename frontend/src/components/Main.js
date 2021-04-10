@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-/* import { actions } from 'react-redux-form'; */
 import { loginUser, logoutUser, signinUser } from '../redux/auth/actionCreators';
 import { fetchBeers } from '../redux/beer/actionCreators';
 import { fetchComments, postComment } from '../redux/comment/actionCreators';

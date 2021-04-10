@@ -1,11 +1,6 @@
 import * as ActionTypes from './actions';
 import apiClient from '../../services/api';
 import { baseUrl } from '../../shared/baseUrl';
-
-export const addComment = (comment) => ({
-    type: ActionTypes.ADD_COMMENT,
-    payload: comment
-});
   
 export const postComment = (beerId, rating, comment) => (dispatch) => {
     apiClient.post(baseUrl + 'comments', {
@@ -16,7 +11,7 @@ export const postComment = (beerId, rating, comment) => (dispatch) => {
     .then(response => {
         return response.data;
     })
-    .then(comments => dispatch(addComment(comments)));
+    .then(dispatch(fetchComments()));
 }
   
 export const fetchComments = () => (dispatch) => {

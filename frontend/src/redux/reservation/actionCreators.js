@@ -11,18 +11,13 @@ export const fetchReservations = () => (dispatch) => {
         })
         .then(reservations => dispatch(addReservations(reservations)))
         .catch(error => {
-            handleError(error.response);
+            if (error.response.status && error.response.status === 401) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('loggedIn');
+            }
             dispatch(reservationsFailed(error.message));
         });
     } else {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedIn');
-        dispatch(reservationsFailed('401'));
-    }
-}
-
-function handleError(response) {
-    if (response.status === 401) {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedIn');
     }
@@ -32,9 +27,10 @@ export const reservationsLoading = () => ({
     type: ActionTypes.RESERVATIONS_LOADING
 });
 
-export const reservationsFailed = (errmess) => ({
+export const reservationsFailed = (message, errors) => ({
     type: ActionTypes.RESERVATIONS_FAILED,
-    payload: errmess
+    message,
+    errors
 });
 
 export const addReservations = (reservations) => ({
@@ -53,7 +49,11 @@ export const postReservation = (data) => (dispatch) => {
     .then(response => {
         return response.data;
     })
-    .then(reservation => dispatch(addReservation(reservation)));
+    .then(reservation => dispatch(addReservation(reservation)))
+    .catch(error => {
+        if (error.response.status && error.response.status === 422) dispatch(reservationsFailed(error.message, error.response.data.errors))
+        else dispatch(reservationsFailed(error.message, null))
+    })
 }
 
 export const deleteReservation = (reservationId) => (dispatch) => {

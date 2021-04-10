@@ -29,7 +29,10 @@ export const fetchFavorites = () => (dispatch) => {
         })
         .then(favorites => dispatch(addFavorites(favorites)))
         .catch(error => {
-            handleError(error.response);
+            if (error.response.status && error.response.status === 401) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('loggedIn');
+            }
             dispatch(favoritesFailed(error.message));
         });
     } else {

@@ -33,7 +33,7 @@ export const loginUser = (creds) => (dispatch) => {
             localStorage.setItem('loggedIn', true);
             dispatch(receiveLogin(response));
         }).catch(error => {
-            if (error.response.status === 422) dispatch(loginError(error.message, error.response.data.errors))
+            if (error.response.status && error.response.status === 422) dispatch(loginError(error.message, error.response.data.errors))
             else dispatch(loginError(error.message, null))
         })
     });    
@@ -54,10 +54,11 @@ export const receiveSignin = (response) => {
     }
 }
 
-export const signinError = (message) => {
+export const signinError = (message, errors) => {
     return {
         type: ActionTypes.SIGNIN_FAILURE,
-        message
+        message,
+        errors
     }
 }
 
@@ -68,9 +69,11 @@ export const signinUser = (creds) => (dispatch) => {
         apiClient.post('/register', creds)
         .then(response => {
             dispatch(receiveSignin(response));
-        }).catch(error => console.log('errror', error.message)  /* dispatch(loginError(error.message)) */)
+        }).catch(error => {
+            if (error.response.status && error.response.status === 422) dispatch(signinError(error.message, error.response.data.errors))
+            else dispatch(signinError(error.message, null))
+        })
     });    
-
 }
 
 export const requestLogout = () => {

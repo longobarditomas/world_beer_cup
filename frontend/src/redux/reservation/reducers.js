@@ -7,17 +7,34 @@ export const reservationReducer = (state = {
     }, action) => {
     switch(action.type) {
         case ActionTypes.ADD_RESERVATIONS:
-            return {...state, isLoading: false, errMess: null, reservations: action.payload};
+            return {...state, 
+                isLoading: false, 
+                errMess: action.message, 
+                errors: null, 
+                reservations: action.payload
+            };
 
         case ActionTypes.RESERVATIONS_LOADING:
-            return {...state, isLoading: true, errMess: null, reservations: null};
+            return {...state, 
+                isLoading: true, 
+                errMess: action.message, 
+                errors: null, 
+                reservations: null
+            };
 
         case ActionTypes.RESERVATIONS_FAILED:
-            return {...state, isLoading: false, errMess: action.payload, reservations: null};
+            return {...state, 
+                isLoading: false, 
+                errMess: action.message, 
+                errors: action.errors, 
+                reservations: null
+            };
 
         case ActionTypes.ADD_RESERVATION:
             var reservation = action.payload;
-            return { ...state, reservations: state.reservations.concat(reservation)};
+            return { ...state, 
+                reservations: state.reservations.concat(reservation)
+            };
 
         default:
             return state;

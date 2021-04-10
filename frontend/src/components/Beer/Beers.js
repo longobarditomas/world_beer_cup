@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Loading } from '../Loading';
 import { baseUrl } from '../../shared/baseUrl';
 
-	function RenderMenuItem({ beer, fetchComments }) {
+	function RenderMenuItem({ beer }) {
 		return(
 			<Card className={`beer-color-${beer.category}`}>
 				<Link to={`/beers/${beer.id}`}>
@@ -39,7 +39,7 @@ import { baseUrl } from '../../shared/baseUrl';
 		const menu = props.beers.beers.map((beer) => {
 			return (
 				<div key={beer.id} className="col-12 col-md-4 mt-5">
-					<RenderMenuItem beer={beer} fetchComments={props.fetchComments} />
+					<RenderMenuItem beer={beer} />
 				</div>
 			);
 		});

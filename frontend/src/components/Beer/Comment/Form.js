@@ -24,7 +24,8 @@ class CommentForm extends Component {
 
 	handleSubmit(values) {
 		this.toggleModal();
-		this.props.postComment(this.props.beerId, values.rating, values.comment);
+		var rating = values.rating > 0 ? values.rating : 1; 
+		this.props.postComment(this.props.beerId, rating, values.comment);
 	}
 
 	render() {
@@ -56,7 +57,7 @@ class CommentForm extends Component {
 										placeholder="Your Comment"
 										className="form-control"
 										validators={{
-											required, minLength: minLength(3), maxLength: maxLength(15)
+											required, minLength: minLength(5), maxLength: maxLength(150)
 										}}
 										/>
 									<Errors

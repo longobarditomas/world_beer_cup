@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, Row, Label, Col } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
+import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays, addMonths, setHours, setMinutes } from "date-fns";
@@ -25,7 +26,6 @@ class ReservationForm extends Component {
 
     handleSubmit(data) {
         this.props.postReservation({ date: this.state.startDate, party: data.party, requeriments: data.requeriments});
-        /* this.props.resetReservationForm(); */
     }
 
     render() {
@@ -45,7 +45,6 @@ class ReservationForm extends Component {
                                         maxDate={addMonths(new Date(), 2)} 
                                         minTime={setHours(setMinutes(new Date(), 0), 17)} 
                                         maxTime={setHours(setMinutes(new Date(), 30), 22)} 
-                                        /* dateFormat="yyyy-MM-dd H:mm"  */
                                         dateFormat="MMMM d, yyyy h:mm aa" 
                                         placeholderText="Select a date"
                                         className="date-picker"
@@ -56,8 +55,7 @@ class ReservationForm extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="party" md={4} style={{textAlign: 'left'}}>Party size*</Label>
                                 <Col md={8}>
-                                    <Control.select model=".party" name="party"
-                                        className="form-control" validators={{required, isNumber}}>
+                                    <Control.select model=".party" name="party" className="form-control" validators={{required, isNumber}}>
                                         <option>Select</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -99,7 +97,7 @@ class ReservationForm extends Component {
             );
         } else {
             return (
-                <div><Card><CardBody><h6>Please Login to make a Reservation.</h6></CardBody></Card></div>
+                <div><Card><CardBody><h6>Please <Link to="/login">Login</Link> to make a Reservation.</h6></CardBody></Card></div>
             )
         }
     }
