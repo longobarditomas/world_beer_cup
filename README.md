@@ -33,7 +33,7 @@
 - npm start
 
 #### Notes
-- Login available using some of the test users. Ex.: bach@gmail.com (user), password (bach) 
+- Login available using some of the test users. Ex.: bach@gmail.com (user), password (bach). 
 
 ## Developer
 
